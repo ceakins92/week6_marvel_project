@@ -18,7 +18,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String)
     date_joined = db.Column(db.DateTime, default=datetime.utcnow)
     token = db.Column(db.String(250), unique=True)
-    posts = db.relationship('Characters', backref='author', lazy=True)
+    posts = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self):
         return f'User: {self.username}'

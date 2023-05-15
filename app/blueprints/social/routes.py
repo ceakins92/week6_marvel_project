@@ -12,7 +12,7 @@ from app.forms import PostForm
 def post():
     form = PostForm()
     if form.validate_on_submit():
-        p = Post(body=form.body.data,card_name=form.card_name.data,card_series=form.card_series.data,card_number=form.card_series.data,card_value=form.card_value.data)
+        p = Post(char_name=form.char_name.data,char_description=form.char_description.data,char_super_powers=form.char_super_powers.data,comics_app_in=form.comics_app_in.data,movies_app_in=form.movies_app_in.data)
         p.user_id = current_user.user_id
         p.commit()
         flash('Published', 'success')

@@ -16,9 +16,9 @@
     <div id="main">
         <article class="main-articles">
             <center>
-                <h1>The MARVEL(<font style="color:crimson">collections</font>)</h1>
-                <h4>c o m m u n i t y</h4><br>
-                <strong><small>About the Community</strong></small></strong><br><br>
+                <br>
+                <h4>c o m m i s s i o n &nbsp&nbspa r t</h4><br>
+                <small>Commission original artwork from professionals</strong><br><br>
 
             </center>
             <figure>
@@ -30,25 +30,28 @@
                 Complete and submit the form below, and we'll connect you with a highly skilled artist that can
                 professionally produce original art just for you!
             </p>
+            <center>
+                <font style="color: rgb(226, 214, 161)">
+                    <form class="contact" action="{{ url_for('auth.get_commission') }}" method=post>
 
-            {<form class="contact" action="{{ url_for('auth.get_commission') }}" method=post>
+                        {{ form.hidden_tag()}}
+                        <p>
+                            {{ form.name.label }}<br>
+                            {{ form.name(placeholder='Full Name') }}<br>
+                            {{ form.email.label }}<br>
+                            {{ form.email(placeholder='Your Email ...') }}<br>
+                            {{ form.subject.label }}<br>
+                            {{form.subject(placeholder='Subject ...')}}<br>
+                            {{ form.message.label }}<br>
+                            {{ form.message(placeholder='Describe your Request ...') }}<br>
+                            {{ form.budget.label }}<br>
+                            {{ form.budget(placeholder='Your Budget ...') }}<br><br>
+                            {{ form.submit() }}
+                        </p>
 
-                {{ form.hidden_tag()}}
-                <p>
-                    {{ form.name.label }}<br>
-                    {{ form.name(placeholder='Full Name') }}<br>
-                    {{ form.email.label }}<br>
-                    {{ form.email(placeholder='Your Email ...') }}<br>
-                    {{ form.subject.label }}<br>
-                    {{form.subject(placeholder='Subject ...')}}<br>
-                    {{ form.message.label }}<br>
-                    {{ form.message(placeholder='Describe your Request ...') }}<br>
-                    {{ form.budget.label }}<br>
-                    {{ form.budget(placeholder='Your Budget ...') }}<br><br>
-                    {{ form.submit() }}
-                </p>
-
-            </form>
+                    </form>
+                </font>
+            </center>
         </article>
     </div>
 
@@ -71,15 +74,16 @@
                 {% else %}
                 <br>
                 <h5 style="color: rgb(226, 214, 161)">
-                    Welcome back {{ user.username }}!<br><br>
+                    Welcome back {{ current_user.username.title() }}!<br><br>
 
-                    View your MARVEL(<em>
-                        <font color="red">collections</font>
-                    </em>) collection page?</h5><br>
+                    View your <font color="white">MARVEL(</font>
+                    <font color="red">collections</font>
+                    <font color="white">)</font> collection page?
+                </h5><br>
                 <a class="btn btn-outline-danger"
                     href="{{ url_for('social.user_page', username=current_user.username) }}" role="button">My
                     Collection</a>
-                </center><br>
+                </center><br><br>
                 <a class="btn btn-outline-danger" href="{{ url_for('social.post') }}" role="button">Add
                     Character</a><br><br>
                 {% endif %}

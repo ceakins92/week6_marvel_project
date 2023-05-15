@@ -67,17 +67,18 @@
                 <center><a class="btn btn-outline-danger" href="{{ url_for('auth.register') }}"
                         role="button">Register</a></center><br><br>
                 {% else %}
-                <br>
-                <h5 style="color: rgb(226, 214, 161)">
-                    Welcome back {{ user.username }}!<br><br>
 
-                    View your MARVEL(<em>
-                        <font color="red">collections</font>
-                    </em>) collection page?</h5><br>
+                <h5 style="color: rgb(226, 214, 161)">
+                    Welcome back {{ current_user.username.title() }}!<br><br>
+
+                    View your <font color="white">MARVEL(</font>
+                    <font color="red">collections</font>
+                    <font color="white">)</font> collection page?
+                </h5><br>
                 <a class="btn btn-outline-danger"
                     href="{{ url_for('social.user_page', username=current_user.username) }}" role="button">My
                     Collection</a>
-                </center><br>
+                </center><br><br>
                 <a class="btn btn-outline-danger" href="{{ url_for('social.post') }}" role="button">Add
                     Character</a><br><br>
                 {% endif %}
