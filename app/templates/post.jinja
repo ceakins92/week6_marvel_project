@@ -1,0 +1,50 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+
+
+
+<body background-color="black">
+    <center>
+        <br>
+        <img src="{{url_for('static', filename='/img/logo1.jpg')}}" align="middle" height="400px" />
+        <br>
+        <br>
+        <h5 style="color: rgb(226, 214, 161)">Share with the <font style="color: white">Marvel</font>
+            <em>
+                <font style="color: red">2086</font>
+                <font style="color:rgb(226, 214, 161)"> community!</font>
+            </em> Account:
+        </h5>
+        <br>
+        <br>
+        <form action="" method="post">
+            <font style="color:rgb(226, 214, 161)">
+                {{ form.hidden_tag()}}
+
+                <p>
+                    {{ form.card_name.label }}<br>
+                    {{ form.card_name(size=50) }}<br>
+                    {{ form.card_series.label }}<br>
+                    {{ form.card_series(size=50) }}<br>
+                    {{ form.card_number.label }}<br>
+                    {{ form.card_number(size=50) }}<br>
+                    {{ form.card_value.label }}<br>
+                    {{ form.card_value(size=50) }}<br>
+                    {{ form.body.label }}<br>
+                    {{ form.body(size=50) }}<br>
+                    {% for error in form.body.errors %}
+                    <span class="err-msg"> {{ error }} </span>
+                    {% endfor %}
+                </p>
+
+                <p>
+                    {{ form.submit() }}
+
+                </p>
+        </form>
+
+        </font>
+    </center>
+</body>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<center>
+    <div class="col-md-auto">
+        <br>
+        <br>
+        <img src="{{url_for('static', filename='goodboy.jpg')}}" align="middle" height="400px" />
+        <br>
+        <br>
+        <h5 style="color: rgb(226, 214, 161)">
+            {{ user.username }}'s <font style="color: white">Animal Wars</font><em>
+                <font style="color: red">2086</font> posts
+            </em>
+        </h5>
+        <br>
+
+        {% for post in user.posts %}
+        <h6 style="color: rgb(226, 214, 161)">
+            <hr>
+            <p> Collector Card:
+            <h6 style="color: white">{{ post.card_name }}</h6><br>
+            Card Series No: <h6 style="color: white">{{ post.card_series }}</h6><br>
+            Card Number: <h6 style="color: white">{{ post.card_number }}</h6><br>
+            Current Value: <h6 style="color: white">{{ post.card_value }}</h6><br>
+            Comments: <h6 style="color: white">{{ post.body }}</h6><br>
+        </h6>
+        </p>
+        <small>
+            <font style="color: grey">Posted: {{ post.timestamp }}</font>
+        </small>
+        {% endfor %}
+
+    </div>
+</center>
+{% endblock %}
