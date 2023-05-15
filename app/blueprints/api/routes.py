@@ -12,8 +12,12 @@ def api_posts(user):
     for post in posts:
         result.append({
             'id':post.id,
-            'body':post.body, 
-            'timestamp':post.timestamp, 
+            'char_name':post.char_name,
+            'char_description':post.char_description,
+            'char_super_powers':post.char_super_powers,
+            'comics_app_in':post.comics_app_in,
+            'movies_app_in':post.movies_app_in,
+            'timestamp':post.date_created, 
             'author':post.user_id
             })
     return jsonify(result), 200
@@ -24,14 +28,14 @@ def user_posts(user,username):
     user = User.query.filter_by(username=username).first()
     if user:
       return jsonify([{
-              'id':post.id,
-              'body':post.body,
-              'card_name':post.card_name,
-              'card_series':post.card_series,
-              'card_number':post.card_number,
-              'card_value':post.card_value, 
-              'timestamp':post.timestamp, 
-              'owner':post.user_id
+            'id':post.id,
+            'char_name':post.char_name,
+            'char_description':post.char_description,
+            'char_super_powers':post.char_super_powers,
+            'comics_app_in':post.comics_app_in,
+            'movies_app_in':post.movies_app_in,
+            'timestamp':post.date_created, 
+            'author':post.user_id
               } for post in user.posts]), 200
     return jsonify([{'message':'Invalid Username'}]), 404 
 
@@ -42,13 +46,13 @@ def get_post(user,post_id):
       post = Post.query.get(post_id)
       return jsonify([{
               'id':post.id,
-              'body':post.body,
-              'card_name':post.card_name,
-              'card_series':post.card_series,
-              'card_number':post.card_number,
-              'card_value':post.card_value, 
-              'timestamp':post.timestamp, 
-              'owner':post.user_id
+            'char_name':post.char_name,
+            'char_description':post.char_description,
+            'char_super_powers':post.char_super_powers,
+            'comics_app_in':post.comics_app_in,
+            'movies_app_in':post.movies_app_in,
+            'timestamp':post.date_created, 
+            'author':post.user_id
                 }])
     except: 
       return jsonify([{'message':'Invalid Post Id'}]), 404
@@ -58,7 +62,7 @@ def get_post(user,post_id):
 def make_post(user):
     try:
         content = request.json
-        post = Post(body=content.get('body'),user_id=user.user_id)
+        post = Post(char_name=content.get('char_name'),user_id=user.user_id)
         post.commit()
         return jsonify([{'message':'Post Created','body':post.body}])
     except:
