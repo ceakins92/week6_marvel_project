@@ -7,6 +7,7 @@ colorama
 dnspython
 email-validator
 Flask
+Flask-Cors
 Flask-Login
 Flask-Migrate
 Flask-SQLAlchemy
@@ -22,7 +23,7 @@ MarkupSafe
 marshmallow
 numpy
 pandas
-psycopg2
+psycopg2-binary
 python-dateutil
 python-dotenv
 pytz
